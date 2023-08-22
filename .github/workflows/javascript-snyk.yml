@@ -1,0 +1,48 @@
+name: 'JS - Snyk'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-matrix:
+    name: 'Generate Matrix'
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.generate.outputs.matrix }}
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v3.5.3
+
+      - name: Matrix
+        id: generate
+        uses: zchryr/manifest@main
+        with:
+          manifest: 'package.json'
+          ignore: 'javascript/tests'
+
+  use-matrix:
+    name: 'Snyk: ${{ matrix.job.short }}'
+    runs-on: ubuntu-latest
+    needs: generate-matrix
+    strategy:
+      matrix:
+        job: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+    defaults:
+      run:
+        working-directory: ${{ matrix.job.change }}
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v3.5.3
+
+      - uses: snyk/actions/setup@master
+
+      - name: Snyk Test
+        run: |
+          snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
