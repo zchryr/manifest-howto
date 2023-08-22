@@ -17,6 +17,10 @@ jobs:
       - name: Clone
         uses: actions/checkout@v3.5.3
 
+      - name: env
+        run: env
+        shell: bash
+
       - name: Matrix
         id: generate
         uses: zchryr/manifest@main
