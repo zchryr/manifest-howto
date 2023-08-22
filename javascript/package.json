@@ -1,0 +1,27 @@
+{
+  "name": "javascript",
+  "version": "0.0.1",
+  "description": "javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zchryr/manifest-howto.git"
+  },
+  "author": "Zachary R",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zchryr/manifest-howto/issues"
+  },
+  "homepage": "https://github.com/zchryr/manifest-howto#readme",
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "lodash": "^4.17.10",
+    "minimist": "^1.2.2",
+    "moment": "^2.29.1",
+    "pac-resolver": "^4.2.0",
+    "underscore": "^1.13.0-1"
+  }
+}
