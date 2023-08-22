@@ -23,6 +23,7 @@ jobs:
         with:
           manifest: 'package.json'
           ignore: 'javascript/tests'
+          path: ${{ github.workspace }}
 
   use-matrix:
     name: 'Snyk: ${{ matrix.job.short }}'
