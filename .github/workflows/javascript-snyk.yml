@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Clone
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@v4.0.0
 
       - name: env
         run: env
@@ -42,7 +42,7 @@ jobs:
 
     steps:
       - name: Clone
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@v4.0.0
 
       - uses: snyk/actions/setup@master
 
