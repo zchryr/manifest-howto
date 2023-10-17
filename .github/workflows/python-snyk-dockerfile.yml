@@ -47,7 +47,7 @@ jobs:
         run: |
           docker build . -t vulnerable-app:latest
 
-      - name: Snyk Test
+      - name: Snyk Docker Test
         run: |
           # Run the Snyk command and capture its exit code
           snyk container test vulnerable-app:latest || exit_code=$?
