@@ -18,11 +18,7 @@ jobs:
 
     steps:
       - name: Clone
-        uses: actions/checkout@v4.1.0
-
-      - name: env
-        run: env
-        shell: bash
+        uses: actions/checkout@v4
 
       - name: Matrix
         id: generate
@@ -47,10 +43,12 @@ jobs:
 
       - uses: snyk/actions/setup@master
 
-      - name: Snyk Test
+      - name: Install Python Dependencies
         run: |
           pip3 install -r requirements.txt
 
+      - name: Snyk Test
+        run: |
           # Run the Snyk command and capture its exit code
           snyk test --file=requirements.txt --command=python3 || exit_code=$?
 
