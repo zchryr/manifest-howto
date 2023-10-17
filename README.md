@@ -32,8 +32,18 @@ This repository looks like the following
     │       └── package.json
     └── python
         ├── README.md
-        ├── main.py
-        └── requirements.txt
+        ├── flask-user-input-cmd
+        │   ├── Dockerfile
+        │   ├── app.py
+        │   ├── requirements.txt
+        │   └── templates
+        │       └── index.html
+        ├── script-1
+        │   ├── main.py
+        │   └── requirements.txt
+        └── script-2
+            ├── main.py
+            └── requirements.txt
 
 ## GitHub Actions
 
