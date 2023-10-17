@@ -50,6 +50,8 @@ jobs:
       - name: dotnet build
         run: |
           dotnet build
+        env:
+          DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: 1
 
       - name: semgrep ci
         run: |
