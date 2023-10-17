@@ -26,7 +26,7 @@ jobs:
         uses: zchryr/manifest@main
         with:
           manifest: 'package.json'
-          # ignore_dirs: 'libs,testing/logs,testing/6/sub-6'
+          ignore_dirs: 'javascript/tests'
 
   use-matrix:
     name: 'Snyk: ${{ matrix.job.relativePath }}'
@@ -43,15 +43,10 @@ jobs:
       - name: Clone
         uses: actions/checkout@v4
 
-      - name: CMDs
+      - uses: snyk/actions/setup@master
+
+      - name: Snyk Test
         run: |
-          ls -al
-          pwd
-
-      # - uses: snyk/actions/setup@master
-
-      # - name: Snyk Test
-      #   run: |
-      #     snyk test
-      #   env:
-      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
