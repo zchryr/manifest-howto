@@ -43,8 +43,6 @@ jobs:
       - name: Clone
         uses: actions/checkout@v4
 
-      - uses: snyk/actions/setup@master
-
       - name: Semgrep SAST
         run: |
           semgrep scan --config=auto --sarif > results.sarif
