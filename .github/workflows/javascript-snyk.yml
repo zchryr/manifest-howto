@@ -1,4 +1,4 @@
-name: 'JS - Snyk'
+name: 'JS - Snyk SCA'
 
 on:
   push:
