@@ -1,4 +1,4 @@
-name: 'Python - Snyk'
+name: 'Python - Snyk SCA'
 
 on:
   push:
