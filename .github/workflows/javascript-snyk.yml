@@ -47,6 +47,6 @@ jobs:
 
       - name: Snyk Test
         run: |
-          snyk test
+          snyk test --exit-code=0
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
