@@ -1,0 +1,58 @@
+name: 'Python - Semgrep SAST'
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # This cron runs at 00:00 on every Monday
+    - cron: '0 0 * * MON'
+  workflow_dispatch: # Run manually.
+
+jobs:
+  generate-matrix:
+    name: 'Generate Matrix'
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.generate.outputs.matrix }}
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v4
+
+      - name: Matrix
+        id: generate
+        uses: zchryr/manifest@main
+        with:
+          manifest: 'requirements.txt'
+
+  use-matrix:
+    name: '${{ matrix.job.relativePath }}'
+    runs-on: ubuntu-latest
+    needs: generate-matrix
+    strategy:
+      matrix:
+        job: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+    defaults:
+      run:
+        working-directory: ${{ matrix.job.cd }}
+    container:
+      image: returntocorp/semgrep
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v4
+
+      - uses: snyk/actions/setup@master
+
+      - name: Semgrep SAST
+        run: |
+          semgrep scan --config=auto --sarif > results.sarif
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
+          category: semgrep
