@@ -1,5 +1,5 @@
-# Use an official Python runtime as the base image
-FROM python:3.9-slim
+# Use an official Python runtime as the base image. Purposely old and filled with vulns.
+FROM python:3.9-buster
 
 # Set the working directory in the container to /app
 WORKDIR /app
