@@ -196,10 +196,3 @@ bin/Release/netcoreapp*/
 *.*~
 
 bin
-
-# Exclude entire wwwroot (not typically recommended)
-wwwroot/
-
-# Or exclude specific directories or files
-wwwroot/someDirectory/
-wwwroot/someFile.js
