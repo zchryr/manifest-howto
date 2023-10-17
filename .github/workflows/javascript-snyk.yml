@@ -18,11 +18,7 @@ jobs:
 
     steps:
       - name: Clone
-        uses: actions/checkout@v4.1.0
-
-      - name: env
-        run: env
-        shell: bash
+        uses: actions/checkout@v4
 
       - name: Matrix
         id: generate
