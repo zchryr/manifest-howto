@@ -22,7 +22,7 @@ jobs:
 
       - name: Matrix
         id: generate
-        uses: zchryr/manifest@main
+        uses: zchryr/manifest@v1.0.1
         with:
           manifest: '*.csproj'
 
