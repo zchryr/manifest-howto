@@ -44,6 +44,10 @@ jobs:
 
       - uses: snyk/actions/setup@master
 
+      - name: Install JS Dependencies
+        run: |
+          npm install
+
       - name: Snyk Test
         run: |
           # Run the Snyk command and capture its exit code
