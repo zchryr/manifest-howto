@@ -9,8 +9,12 @@ This repository looks like the following
     .
     ├── README.md
     ├── dotnet
-    │   ├── Program.cs
-    │   └── dotnet.csproj
+    │   └── VulnerableApp
+    │       ├── Program.cs
+    │       ├── Startup.cs
+    │       ├── VulnerableApp.csproj
+    │       ├── appsettings.Development.json
+    │       └── appsettings.json
     ├── javascript
     │   ├── feature-1
     │   │   ├── index.js
@@ -30,6 +34,7 @@ This repository looks like the following
     │   └── tests
     │       ├── nothing-to-see-here.txt
     │       └── package.json
+    ├── package.json
     └── python
         ├── README.md
         ├── flask-user-input-cmd
