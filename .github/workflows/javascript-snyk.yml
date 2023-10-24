@@ -22,7 +22,7 @@ jobs:
 
       - name: Matrix
         id: generate
-        uses: zchryr/manifest@v1.0.1
+        uses: zchryr/manifest@v1.0.2
         with:
           manifest: 'package.json'
           ignore_dirs: 'javascript/tests'
